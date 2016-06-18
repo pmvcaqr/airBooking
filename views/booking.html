@@ -1,0 +1,108 @@
+<div class="container booking-section">
+    <!-- Flight places -->
+    <div class="booking-field" ng-if="booking.tickets.length === 0">
+        <div class="booking-origin">
+            <span class="title">Please select your Point of Origin</span>
+            <select ng-model="booking.selectedOrigin" pvp-country-picker="name"></select>
+        </div>
+        <div class="booking-destination">
+            <span class="title">Please select your Destination</span>
+            <select ng-model="booking.selectedDestination" pvp-country-picker="name"></select>
+        </div>
+    </div>
+    <!-- Flight dates -->
+    <div class="booking-field" ng-if="booking.selectedOrigin && booking.selectedDestination && booking.tickets.length === 0">
+        <input type="checkbox" class="btn btn-default" ng-model="booking.isTwoWayFlight">Return</input>
+        <div class="booking-departure">
+            <span class="title">Please select your Departure Date</span>
+            <uib-datepicker ng-model="booking.departureDate" class="well well-sm"></uib-datepicker>
+        </div>
+        <div class="booking-return" uib-collapse="!booking.isTwoWayFlight">
+            <span class="title" Please select your Return Date</span>
+            <uib-datepicker ng-model="booking.returnDate" class="well well-sm"></uib-datepicker>
+        </div>
+    </div>
+    <!-- Flight paxs -->
+    <div class="booking-field" ng-if="booking.selectedOrigin && booking.selectedDestination && booking.tickets.length === 0" ">
+        <span class="title ">Please select attendees</span>
+        <div class="row ">
+            <pax-counter title="Adults " counter="booking.paxAdults " class="col-xs-6 col-sm-4 "></pax-counter>
+            <pax-counter title="Kids " counter="booking.paxKids " class="col-xs-6 col-sm-4 "></pax-counter>
+            <pax-counter title="Infants " counter="booking.paxInfants " class="col-xs-6 col-sm-4 "></pax-counter>
+        </div>
+    </div>
+    <!-- Flight details -->
+    <div class="booking-field " ng-if="booking.selectedOrigin && booking.selectedDestination && booking.tickets.length===0 "">
+        <span class="title">Please take a look on your flight details</span>
+        <div class="row">
+            <div class="col-xs-6 col-sm-4">
+                <span class="row">Departure</span>
+                <span class="row">From {{booking.selectedOrigin}} to {{booking.selectedDestination}}</span>
+                <span class="row">{{booking.departureDate | date:"fullDate"}}</span>
+            </div>
+            <div ng-if="booking.isTwoWayFlight" class="col-xs-6 col-sm-4">
+                <span class="row">Return</span>
+                <span class="row">From {{booking.selectedDestination}} to {{booking.selectedOrigin}}</span>
+                <span class="row">{{booking.returnDate | date:"fullDate"}}</span>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <span>Attendees: </span>
+                <span>{{booking.paxAdults}} adults</span>
+                <span ng-if="booking.paxKids > 0">, {{booking.paxKids}} kids</span>
+                <span ng-if="booking.paxInfants > 0">, {{booking.paxInfants}} infrants</span>
+            </div>
+        </div>
+    </div>
+    <div class="booking-field" ng-if="booking.selectedOrigin && booking.selectedDestination && booking.tickets.length === 0" ">
+        <button type="button " class="btn btn-primary " ng-click="booking.getTickets() ">
+            Check for available tickets
+        </button>
+    </div>
+    <!-- Available Tickets -->
+    <div class="booking-field " ng-if="booking.tickets.length> 0">
+        <span class="title">Please select associated Departure flight</span>
+        <div id="departure-{{$index}}" class="row ticket-detail departure" ng-repeat="ticket in booking.tickets track by $index" ng-click="booking.selectDepartureTicket($index)">
+            <div class="col-xs-6 col-sm-4">
+                <span class="row header">Departure</span>
+                <span class="row">{{ticket.departureDate | date:"fullDate"}}</span>
+                <span class="row">{{ticket.origin}}</span>
+            </div>
+            <div ng-if="booking.isTwoWayFlight" class="col-xs-6 col-sm-4">
+                <span class="row header">Arrival</span>
+                <span class="row">{{ticket.arrivalDate | date:"fullDate"}}</span>
+                <span class="row">{{ticket.destination}}</span>
+            </div>
+            <div class="col-xs-6 col-sm-4">
+                <span class="row header">Ticket Price</span>
+                <span class="row">{{ticket.price}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="booking-field" ng-if="booking.tickets.length > 0" ">
+        <span class="title ">Please select associated Return flight</span>
+        <div id="return-{{$index}} " class="row ticket-detail return " ng-repeat="ticket in booking.tickets " ng-click="booking.selectReturnTicket($index) ">
+            <div class="col-xs-6 col-sm-4 ">
+                <span class="row header ">Departure</span>
+                <span class="row">{{ticket.arrivalDate | date:"fullDate"}}</span>
+                <span class="row">{{ticket.destination}}</span>
+            </div>
+            <div ng-if="booking.isTwoWayFlight " class="col-xs-6 col-sm-4 ">
+                <span class="row header ">Arrival</span>
+                <span class="row">{{ticket.departureDate | date:"fullDate"}}</span>
+                <span class="row">{{ticket.origin}}</span>
+            </div>
+            <div class="col-xs-6 col-sm-4 ">
+                <span class="row header ">Ticket Price</span>
+                <span class="row ">{{ticket.price}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="booking-field " ng-if="booking.tickets.length> 0">
+        <button type="button" class="btn btn-primary" ng-click="booking.goToPayment()">
+            Payment
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="booking.resetFlight()">
+            Redo
+        </button>
+    </div>
+</div>
