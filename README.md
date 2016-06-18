@@ -1,28 +1,13 @@
-# AngularJS-Boilerplate
-Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks
+# AngularJS-AirBooking
+Simple AngularJS Web application which uses Boilerplate to kick start new project with SASS support and Gulp watch/build tasks
 
-# Features
-* SASS support including sourceMaps
-* Minimal CSS styling of the view
-* Gulp watch, build and local server tasks
-* Responsive navigation
-* Owl slider directive
-* localStorage service for set, get, remove data
-* queryService $http wrapper to handle calls
-* clear folder structure
-* less than 10 request in build version
-* minified CSS and JS build files
-* google analytics snippet
-
-## Download
+## Clone and run a demo
 ```bash
-bower install angularjs-boilerplate
+git clone https://github.com/pmvcaqr/airBooking.git
 ```
 
-or
-
 ```bash
-git clone https://github.com/jbutko/AngularJS-Boilerplate.git
+npm install && bower install
 ```
 
 ## 1. Setup

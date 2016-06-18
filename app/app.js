@@ -1,14 +1,3 @@
-/**
- * 
- * AngularJS Boilerplate
- * @description           Description
- * @author                Jozef Butko // www.jozefbutko.com/resume
- * @url                   www.jozefbutko.com
- * @version               1.1.7
- * @date                  March 2015
- * @license               MIT
- * 
- */
 ;(function() {
 
 
@@ -16,8 +5,10 @@
    * Definition of the main app module and its dependencies
    */
   angular
-    .module('boilerplate', [
-      'ngRoute'
+    .module('airbooking', [
+      'ngRoute',
+      'puigcerber.countryPicker',
+      'ui.bootstrap'
     ])
     .config(config);
 
@@ -48,10 +39,15 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .when('/setup', {
-        templateUrl: 'views/setup.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+      .when('/booking', {
+        templateUrl: 'views/booking.html',
+        controller: 'BookingController',
+        controllerAs: 'booking'
+      })
+      .when('/payment', {
+        templateUrl: 'views/payment.html',
+        controller: 'PaymentController',
+        controllerAs: 'payment'
       })
       .otherwise({
         redirectTo: '/'
@@ -68,7 +64,7 @@
    * 
    */
   angular
-    .module('boilerplate')
+    .module('airbooking')
     .factory('authInterceptor', authInterceptor);
 
   authInterceptor.$inject = ['$rootScope', '$q', 'LocalStorage', '$location'];
@@ -100,7 +96,7 @@
    * Run block
    */
   angular
-    .module('boilerplate')
+    .module('airbooking')
     .run(run);
 
   run.$inject = ['$rootScope', '$location'];

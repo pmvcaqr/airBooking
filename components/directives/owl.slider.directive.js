@@ -26,7 +26,7 @@
    * 
    */
   angular
-    .module('boilerplate')
+    .module('airbooking')
     .directive('myslider', slider);
 
   function slider() {

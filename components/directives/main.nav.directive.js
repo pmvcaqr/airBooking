@@ -12,7 +12,7 @@
    *
    */
   angular
-    .module('boilerplate')
+    .module('airbooking')
     .directive('mainNav', tinMainNav);
 
   function tinMainNav() {

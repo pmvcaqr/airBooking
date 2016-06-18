@@ -9,9 +9,9 @@
 	 * CONSTANTS.API_URL
 	 */
   angular
-  	.module('boilerplate')
+  	.module('airbooking')
     .constant('CONSTANTS', {
-      'API_URL': 'http://www.yourAPIurl.com/'
+      'API_URL': 'http://www.airBooking.test/'
     });
 
 

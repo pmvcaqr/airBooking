@@ -34,7 +34,7 @@
 
 
   angular
-    .module('boilerplate')
+    .module('airbooking')
     .factory('QueryService', [
       '$http', '$q', 'CONSTANTS', QueryService
     ]);

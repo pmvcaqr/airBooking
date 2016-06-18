@@ -24,7 +24,7 @@
      *
      */
     angular
-      .module('boilerplate')
+      .module('airbooking')
       .factory('LocalStorage', [
         '$window', '$rootScope', LocalStorageService
       ]);
