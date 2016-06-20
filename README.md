@@ -7,7 +7,13 @@ git clone https://github.com/pmvcaqr/airBooking.git
 ```
 
 ```bash
-npm install && bower install
+npm install -g bower gulp
+```
+```bash
+npm install
+```
+```bash
+bower install
 ```
 - install all npm and bower dependencies
 
@@ -15,6 +21,8 @@ npm install && bower install
 gulp
 ```
 - Run project on local machine.
+
+**Note:** If `gulp` fails by `node-sass`. Run `rm -rf node_modules/ng-build/node_modules/node-sass/` to remove node-sass module, and then reinstall `npm install node-sass`. This is general issue of node-sass module.
 
 ```bash
 gulp build
