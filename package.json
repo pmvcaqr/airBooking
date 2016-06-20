@@ -36,12 +36,9 @@
     "tiny-lr": "^0.1.4",
     "watch": "^0.13.0"
   },
-  "scripts": {
-    "postinstall": "bower install --no-interactive --allow-root"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jbutko/AngularJS-Boilerplate.git"
+    "url": "https://github.com/pmvcaqr/airBooking.git"
   },
   "keywords": [
     "angular",
@@ -52,10 +49,7 @@
     "single-page",
     "spa"
   ],
-  "author": "Jozef Butko",
-  "docs": "https://github.com/jbutko/AngularJS-Boilerplate/blob/master/README.md",
-  "bugs": {
-    "url": "https://github.com/jbutko/AngularJS-Boilerplate/issues"
-  },
-  "homepage": "https://github.com/jbutko/AngularJS-Boilerplate"
+  "dependencies": {
+    "node-sass": "^3.8.0"
+  }
 }
